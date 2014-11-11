@@ -10,6 +10,9 @@ body {
     border: 1px solid blue;
     float: left;
 }
+#roomfield{
+    float: left;
+}
 
 #roomNav a {
     display: block;

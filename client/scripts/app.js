@@ -31,6 +31,7 @@ var updateRooms = function(){
   for(var key in roomStorage){
     var room = $('<button>').attr('id','room').text(key);
     room.on("click",function() {
+      IDStorage = {};
       roomFilter = $(this).text();
       roomString = '.'+ roomFilter;
       var roomOnly = $(roomString);
@@ -40,6 +41,15 @@ var updateRooms = function(){
     $('#roomNav').append(room);
   }
 }
+
+$('#roomButton').click(function(){
+  var roomName = $('#makeRoom').val();
+  $('makeRoom').val('');
+  var newRoom = $('<button>').attr('id','room').text(roomName);
+  $('#roomNav').append(room);
+  roomFilter = roomName;
+  $('#main').empty();
+});
 
 $('h1').click(function(){
   event.preventDefault();
@@ -81,14 +91,14 @@ var sendMessage = function(object) { $.ajax({
 }); }
 
 $('button').click(function() {
-  var message = $('input').val();
+  var message = $('#sendChat').val();
   var object = {
     'username':window.location.search.slice(10),
     'text': message,
     'roomname': roomFilter || 'lbc'
   }
   sendMessage(object);
-  $('input').val('');
+  $('#sendChat').val('');
 });
 
 var retrieveAllMessages = function(){
