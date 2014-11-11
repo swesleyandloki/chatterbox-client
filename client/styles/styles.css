@@ -3,9 +3,22 @@ body {
     text-align: center;
     padding: 0 25px;
     font-family: arial, sans-serif;
+    max-width: 900px;
+}
+#roomNav {
+    width:200px;
+    border: 1px solid blue;
+    float: left;
+}
+
+#roomNav a {
+    display: block;
+    font-size: 2em;
+    color: orange;
 }
 
 #main {
+    float: right;
     width: 500px;
     margin: auto;
     text-align: left;
@@ -54,7 +67,7 @@ form {
 
 form input[type=text] {
     margin-right: 10px;
-    width: 70%;
+    width: 100%;
     font-size: 12px;
     padding: 5px;
 }
