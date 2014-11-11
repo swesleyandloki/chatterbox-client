@@ -31,9 +31,12 @@ var updateRooms = function(){
   for(var key in roomStorage){
     var room = $('<button>').attr('id','room').text(key);
     room.on("click",function() {
-      roomFilter = $( this ).closest().val();
+      roomFilter = $(this).text();
+      roomString = '#'+ roomFilter;
+      var roomOnly = $(roomString);
       $('#main').empty();
-    })
+      $('#main').append(roomOnly);
+    });
     $('#roomNav').append(room);
   }
 }
@@ -41,6 +44,7 @@ var updateRooms = function(){
 $('h1').click(function(){
   event.preventDefault();
   console.log('h1 click');
+  IDStorage = {};
   $('#main').empty();
   roomFilter = null;
 });
@@ -81,9 +85,10 @@ $('button').click(function() {
   var object = {
     'username':window.location.search.slice(10),
     'text': message,
-    'roomname': 'lbc'
+    'roomname': roomFilter || 'lbc'
   }
   sendMessage(object);
+  $('input').val('');
 });
 
 var retrieveAllMessages = function(){
