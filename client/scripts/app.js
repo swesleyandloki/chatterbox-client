@@ -32,7 +32,7 @@ var updateRooms = function(){
     var room = $('<button>').attr('id','room').text(key);
     room.on("click",function() {
       roomFilter = $(this).text();
-      roomString = '#'+ roomFilter;
+      roomString = '.'+ roomFilter;
       var roomOnly = $(roomString);
       $('#main').empty();
       $('#main').append(roomOnly);
@@ -55,7 +55,7 @@ var displayData = function(data){
   for (var i = 0; i < data.results.length; i++) {
     if(isNew(data.results[i].objectId) && (!roomFilter || data.results[i].roomname == roomFilter)){
        var message = data.results[i];
-       var chat = $('<div>').addClass('chat').attr('id',message.roomname).text(message.text);
+       var chat = $('<div>').addClass('chat').addClass(message.roomname).text(message.text);
        var username = $('<div>').addClass('username').text(message.username);
        chat.prepend(username);
        $("#main").prepend(chat);
